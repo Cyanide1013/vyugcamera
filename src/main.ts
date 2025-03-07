@@ -1,4 +1,5 @@
 import { bootstrapCameraKit } from '@snap/camera-kit';
+import "./index.css";
 
 (async function () {
   const cameraKit = await bootstrapCameraKit({
@@ -12,8 +13,21 @@ import { bootstrapCameraKit } from '@snap/camera-kit';
     video: true,
   });
 
+  // const mediaStream = await navigator.mediaDevices.getUserMedia({
+  //   video: { width: 640, height: 480, frameRate: { ideal: 30, max: 30 } },
+  // });
+
   await session.setSource(mediaStream);
   await session.play();
+
+  // setTimeout(async () => {
+  //   const lens = await cameraKit.lensRepository.loadLens(
+  //     "f0c77a23-a231-4206-9d7a-1008bc4c9629",
+  //     "67e7b4ff-7878-46fd-b778-adbf25e9a722"
+  //   );
+
+  //   await session.applyLens(lens);
+  // }, 1000);
 
   const lens = await cameraKit.lensRepository.loadLens(
     'f0c77a23-a231-4206-9d7a-1008bc4c9629',
