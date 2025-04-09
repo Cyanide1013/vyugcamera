@@ -1,4 +1,4 @@
-import { bootstrapCameraKit } from '@snap/camera-kit';
+import { bootstrapCameraKit, createMediaStreamSource, Transform2D } from '@snap/camera-kit';
 import "./index.css";
 
 (async function () {
@@ -8,16 +8,21 @@ import "./index.css";
   const liveRenderTarget = document.getElementById(
     'canvas'
   ) as HTMLCanvasElement;
+
+
   const session = await cameraKit.createSession({ liveRenderTarget });
   const mediaStream = await navigator.mediaDevices.getUserMedia({
-    video: true,
+    video: true,  
   });
 
   // const mediaStream = await navigator.mediaDevices.getUserMedia({
   //   video: { width: 640, height: 480, frameRate: { ideal: 30, max: 30 } },
   // });
 
-  await session.setSource(mediaStream);
+  const source = createMediaStreamSource(mediaStream)
+  // await session.setSource(mediaStream);
+  await session.setSource(source);
+  // source.setTransform(Transform2D.MirrorX)
   await session.play();
 
   // setTimeout(async () => {
@@ -35,3 +40,4 @@ import "./index.css";
 
   await session.applyLens(lens);
 })();
+
