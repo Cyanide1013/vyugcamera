@@ -22,7 +22,7 @@ import "./index.css";
   const source = createMediaStreamSource(mediaStream)
   // await session.setSource(mediaStream);
   await session.setSource(source);
-  // source.setTransform(Transform2D.MirrorX)
+  source.setTransform(Transform2D.MirrorX)
   await session.play();
 
   // setTimeout(async () => {
