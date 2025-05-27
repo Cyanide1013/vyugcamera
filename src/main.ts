@@ -35,8 +35,8 @@ import "./index.css";
   // }, 1000);
 
   const lens = await cameraKit.lensRepository.loadLens(
-    'e27e2101-5fa9-4c5a-a991-6cea672231d8',
-    '259776e5-d370-4529-98d4-a25d80c77dd0'  );
+    'f0c77a23-a231-4206-9d7a-1008bc4c9629',
+    '67e7b4ff-7878-46fd-b778-adbf25e9a722'  );
 
   await session.applyLens(lens);
 })();
